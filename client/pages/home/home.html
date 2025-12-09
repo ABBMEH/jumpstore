@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Accueil</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="hero-video">
+        <video autoplay loop muted playsinline aria-label="Vidéo promotionnelle du magasin">
+          <source src="/videos/herovideo.webm" type="video/webm" />
+          <p>Votre navigateur ne supporte pas la lecture de vidéos WebM.</p>
+        </video>
+      </section>
+      <section class="items-section" id="items-container">
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="home.js" type="module"></script>
+  </body>
+</html>

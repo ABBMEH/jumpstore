@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Confirmation d'inscription</title>
+    <link rel="stylesheet" href="emailconfirmation.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="confirmation-section">
+        <div class="confirmation-container">
+          <h2>Confirmation d'inscription</h2>
+          <div id="confirmation-message" class="confirmation-message" style="display: none"></div>
+          <div id="error-message" class="error-message" style="display: none"></div>
+          <div class="form-links">
+            <a href="../login/login.html">Se connecter</a>
+            <a href="../register/register.html">S'inscrire</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="emailconfirmation.js" type="module"></script>
+  </body>
+</html>

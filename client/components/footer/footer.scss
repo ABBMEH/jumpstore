@@ -1,0 +1,51 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+.footer {
+  background-color: var(--primary-color);
+  color: vars.$white;
+  padding: vars.$spacing-medium 0;
+  width: 100vw;
+  flex-shrink: 0;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 vars.$spacing-medium;
+
+    .footer-copyright {
+      margin: 0;
+      font-size: vars.$font-size-base;
+      font-family: vars.$font-family-base;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .footer {
+    padding: 15px 0;
+
+    .footer-content {
+      .footer-copyright {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@include mix.media-small-mobile {
+  .footer {
+    padding: 12px 0;
+
+    .footer-content {
+      .footer-copyright {
+        font-size: vars.$font-size-small;
+      }
+    }
+  }
+}

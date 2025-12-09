@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Paramètres du Site</title>
+    <link rel="stylesheet" href="websiteparams.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="website-params">
+        <div class="params-container">
+          <div class="admin-header">
+            <a href="../adminpanel/adminpanel.html" class="btn-back"><i class="fas fa-arrow-left"></i></a>
+            <h1>Paramètres du Site</h1>
+          </div>
+          <div id="message" class="message" style="display: none"></div>
+          <form id="website-params-form" role="form" aria-label="Formulaire de paramètres du site">
+            <div class="form-group">
+              <label for="footer-text">Texte du Footer</label>
+              <input
+                type="text"
+                id="footer-text"
+                name="footer_text"
+                placeholder="Entrez le texte du footer"
+                aria-required="false"
+              />
+            </div>
+            <div class="form-group">
+              <label for="color-theme">Thème de Couleur</label>
+              <input
+                type="color"
+                id="color-theme"
+                name="color_theme"
+                aria-required="false"
+              />
+            </div>
+            <button type="submit" id="save-params" aria-label="Enregistrer les paramètres">
+              Enregistrer
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="websiteparams.js" type="module"></script>
+  </body>
+</html>

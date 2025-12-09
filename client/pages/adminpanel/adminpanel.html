@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Panneau d'Administration</title>
+    <link rel="stylesheet" href="adminpanel.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="admin-panel">
+        <div class="panel-container">
+          <h1>Panneau d'Administration</h1>
+          <div id="error-message" class="error-message" style="display: none"></div>
+          <div class="admin-buttons">
+            <div class="admin-button" tabindex="0" role="button" aria-label="Accéder à la gestion des produits" onclick="window.location.href='../productmanager/productmanager.html'">
+              <div class="button-icon">
+                <i class="fas fa-tshirt"></i>
+              </div>
+              <h3>Gestion des Produits</h3>
+              <p>Ajouter, modifier, supprimer des produits</p>
+            </div>
+            <div class="admin-button" tabindex="0" role="button" aria-label="Accéder à la gestion des utilisateurs" onclick="window.location.href='../usermanager/usermanager.html'">
+              <div class="button-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Gestion des Utilisateurs</h3>
+              <p>Ajouter, modifier, supprimer des utilisateurs</p>
+            </div>
+            <div class="admin-button" tabindex="0" role="button" aria-label="Accéder aux paramètres du site" onclick="window.location.href='../websiteparams/websiteparams.html'">
+              <div class="button-icon">
+                <i class="fas fa-cog"></i>
+              </div>
+              <h3>Paramétrage</h3>
+              <p>Configurer les paramètres du site</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="adminpanel.js" type="module"></script>
+  </body>
+</html>

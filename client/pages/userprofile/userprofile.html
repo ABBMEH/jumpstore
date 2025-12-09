@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Paramètres du Compte</title>
+    <link rel="stylesheet" href="userprofile.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="user-profile">
+        <div class="profile-container">
+          <h1>Paramètres du Compte</h1>
+          <form id="profile-form" class="profile-form">
+            <div class="form-group">
+              <label for="firstname">Prénom</label>
+              <input type="text" id="firstname" name="firstname" aria-label="Prénom" />
+            </div>
+            <div class="form-group">
+              <label for="lastname">Nom</label>
+              <input type="text" id="lastname" name="lastname" aria-label="Nom" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" aria-label="Email" />
+            </div>
+            <div class="form-group password-container">
+              <label for="currentPassword">Mot de passe actuel <span class="italic-text">(requis pour modifier l'email ou le mot de passe)</span></label>
+              <div class="password-wrapper">
+                <input type="password" id="currentPassword" name="currentPassword" aria-label="Mot de passe actuel" />
+                <i class="fas fa-eye password-toggle" id="toggleCurrentPassword" aria-label="Afficher ou masquer le mot de passe actuel"></i>
+              </div>
+            </div>
+            <div class="form-group password-container">
+              <label for="newPassword">Nouveau mot de passe (facultatif)</label>
+              <div class="password-wrapper">
+                <input type="password" id="newPassword" name="newPassword" aria-label="Nouveau mot de passe" />
+                <i class="fas fa-eye password-toggle" id="toggleNewPassword" aria-label="Afficher ou masquer le nouveau mot de passe"></i>
+              </div>
+            </div>
+            <div class="form-group password-container">
+              <label for="confirmNewPassword">Confirmer le nouveau mot de passe</label>
+              <div class="password-wrapper">
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword" aria-label="Confirmer le nouveau mot de passe" />
+                <i class="fas fa-eye password-toggle" id="toggleConfirmNewPassword" aria-label="Afficher ou masquer la confirmation du nouveau mot de passe"></i>
+              </div>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="newsletter" name="newsletter" aria-label="S'abonner à la newsletter" />
+              <label for="newsletter">Je souhaite m'abonner à la newsletter pour recevoir les offres spéciales</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="error-input" class="error-input" readonly aria-live="assertive" style="display: none" />
+            </div>
+            <div id="success-message" class="success-message" style="display: none" aria-live="assertive"></div>
+            <button type="submit" class="submit-button" aria-label="Enregistrer les modifications">
+              Enregistrer
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="userprofile.js" type="module"></script>
+  </body>
+</html>

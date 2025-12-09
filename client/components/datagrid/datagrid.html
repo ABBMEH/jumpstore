@@ -1,0 +1,39 @@
+<div class="datagrid-container">
+  <div class="datagrid-header">
+    <span id="item-count">0 éléments</span>
+    <div class="header-controls">
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Rechercher..." />
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <button id="add-item-btn" class="btn-primary"><i class="fas fa-plus"></i> Ajouter</button>
+    </div>
+  </div>
+
+  <div class="datagrid">
+    <table id="datagrid-table">
+      <thead>
+        <tr></tr>
+      </thead>
+      <tbody id="datagrid-body">
+        <tr>
+          <td colspan="9" class="loading">Chargement des données...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <div class="pagination-right">
+      <button id="prev-page" disabled><i class="fas fa-chevron-left"></i></button>
+      <span id="page-info">Page 1 sur 1</span>
+      <button id="next-page" disabled><i class="fas fa-chevron-right"></i></button>
+      <select id="rows-per-page">
+        <option value="10">10 lignes</option>
+        <option value="25">25 lignes</option>
+        <option value="50">50 lignes</option>
+        <option value="100">100 lignes</option>
+      </select>
+    </div>
+  </div>
+</div>

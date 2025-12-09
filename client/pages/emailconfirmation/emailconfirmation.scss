@@ -1,0 +1,177 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  margin: 0;
+  padding: 0;
+  background-color: vars.$background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  background-color: vars.$white;
+  border-bottom: 1px solid vars.$border-color;
+}
+
+.confirmation-section {
+  width: 100%;
+  min-height: calc(100vh - 95px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .confirmation-container {
+    background-color: vars.$white;
+    border: 1px solid vars.$border-color;
+    padding: vars.$spacing-medium;
+    border-radius: vars.$border-radius-medium;
+    width: 90vw;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin: auto;
+
+    h2 {
+      font-size: vars.$font-size-large;
+      margin-bottom: vars.$spacing-medium;
+      text-align: center;
+    }
+
+    .confirmation-message {
+      padding: vars.$spacing-small;
+      background-color: #e6ffe6;
+      color: vars.$success-color;
+      border: 1px solid vars.$success-color;
+      border-radius: vars.$border-radius-small;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: vars.$font-size-base;
+    }
+
+    .error-message {
+      padding: vars.$spacing-small;
+      background-color: #ffe6e6;
+      color: vars.$error-color;
+      border: 1px solid vars.$error-color;
+      border-radius: vars.$border-radius-small;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: vars.$font-size-base;
+    }
+
+    .form-links {
+      display: flex;
+      justify-content: space-between;
+      font-size: vars.$font-size-base;
+
+      a {
+        color: vars.$primary-color;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@include mix.media-desktop-large {
+  .confirmation-section {
+    padding: vars.$spacing-medium;
+  }
+
+  .confirmation-container {
+    padding: 25px;
+    max-width: 450px;
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    .confirmation-message,
+    .error-message {
+      font-size: 15px;
+      padding: 12px;
+    }
+
+    .form-links {
+      font-size: 15px;
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .confirmation-section {
+    padding: vars.$spacing-small;
+    min-height: calc(100vh - 95px);
+  }
+
+  .confirmation-container {
+    padding: 15px;
+    max-width: 90vw;
+    margin: auto;
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .confirmation-message,
+    .error-message {
+      font-size: 13px;
+      padding: 8px;
+    }
+
+    .form-links {
+      font-size: 13px;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+}
+
+@include mix.media-small-mobile {
+  .confirmation-section {
+    padding: 5px;
+    min-height: calc(100vh - 95px);
+  }
+
+  .confirmation-container {
+    padding: vars.$spacing-small;
+    max-width: 95vw;
+    border-radius: 6px;
+    margin: auto;
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .confirmation-message,
+    .error-message {
+      font-size: vars.$font-size-small;
+      padding: 6px;
+    }
+
+    .form-links {
+      font-size: vars.$font-size-small;
+      gap: 6px;
+    }
+  }
+}

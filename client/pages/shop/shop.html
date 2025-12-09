@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Shop</title>
+    <link rel="stylesheet" href="shop.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="products">
+        <div class="header">
+          <div class="filter-controls">
+            <select id="sort-by">
+              <option value="">Tri par</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+            </select>
+            <select id="filter-brand" class="filter-dropdown" data-filter-type="brand">
+              <option value="">Filtrer par marque</option>
+            </select>
+            <select id="filter-category" class="filter-dropdown" data-filter-type="category">
+              <option value="">Filtrer par catégorie</option>
+            </select>
+            <div class="filter-subcategories custom-combobox">
+              <button class="combobox-trigger" aria-label="Sous-catégories" aria-expanded="false">Sous-catégories</button>
+              <div class="combobox-content" id="filter-subcategories">
+              </div>
+            </div>
+            <div class="price-filter">
+              <label>Prix: </label>
+              <input type="range" id="min-price-slider" min="0" max="100" value="0" />
+              <input type="range" id="max-price-slider" min="0" max="100" value="100" />
+              <div class="slider-values"><span id="min-price-value">€0</span> à <span id="max-price-value">€100</span></div>
+            </div>
+            <button id="apply-filter">Appliquer</button>
+            <button id="clear-all">Tout effacer</button>
+          </div>
+          <span id="product-count">0 produits</span>
+        </div>
+        <div class="grid">
+        </div>
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="shop.js" type="module"></script>
+  </body>
+</html>

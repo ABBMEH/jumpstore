@@ -1,0 +1,67 @@
+<div class="navbar">
+  <div class="navbar-content">
+    <div class="logo">
+      <img src="../../imgs/logo.webp" alt="Store Logo" onclick="window.resetFiltersOnLogoClick(event)" />
+    </div>
+    <div class="burger-menu-container">
+      <div class="mobile-user-section" id="mobile-user-section" style="display: none" tabindex="0" role="button" aria-label="Ouvrir le menu utilisateur mobile" aria-expanded="false" aria-controls="mobile-user-dropdown-menu">
+        <div class="mobile-user-avatar" id="mobile-user-avatar">
+          <img src="/imgs/default_avatar.webp" alt="User Avatar" id="mobile-user-avatar-img" />
+        </div>
+        <div class="user-dropdown-menu mobile-dropdown" id="mobile-user-dropdown-menu" role="menu">
+          <table>
+            <tr id="mobile-home-item" style="display: none">
+              <td><i class="fas fa-home"></i></td>
+              <td><a href="../../pages/adminpanel/adminpanel.html" class="dropdown-item" tabindex="0" role="menuitem">Panneau d'administration</a></td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-user-gear"></i></td>
+              <td><a href="/pages/userprofile/userprofile.html" class="dropdown-item" tabindex="0" role="menuitem">Paramètres du compte</a></td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-arrow-right-from-bracket"></i></td>
+              <td><a href="#" class="dropdown-item" onclick="window.logout()" tabindex="0" role="menuitem">Déconnexion</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <button class="burger-menu" id="burger-menu" aria-label="Ouvrir le menu de navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <div class="category-buttons" id="category-buttons"></div>
+      <li id="login-link"><a href="/pages/login/login.html">Connexion</a></li>
+    </ul>
+    <div class="user-section" id="user-section" tabindex="0" role="button" aria-label="Ouvrir le menu utilisateur" aria-expanded="false" aria-controls="user-dropdown-menu">
+      <div class="user-info">
+        <div class="user-avatar">
+          <img src="/imgs/default_avatar.webp" alt="User Avatar" id="user-avatar-img" />
+        </div>
+        <div class="user-details">
+          <span class="user-name" id="user-name">Utilisateur</span>
+          <span class="user-role" id="user-role">Utilisateur</span>
+        </div>
+        <i class="fas fa-chevron-down dropdown-arrow"></i>
+      </div>
+      <div class="user-dropdown-menu" id="user-dropdown-menu" role="menu">
+        <table>
+          <tr id="home-item" style="display: none">
+            <td><i class="fas fa-home"></i></td>
+            <td><a href="../../pages/adminpanel/adminpanel.html" class="dropdown-item" tabindex="0" role="menuitem">Panneau d'administration</a></td>
+          </tr>
+          <tr>
+            <td><i class="fa-solid fa-user-gear"></i></td>
+            <td><a href="/pages/userprofile/userprofile.html" class="dropdown-item" tabindex="0" role="menuitem">Paramètres du compte</a></td>
+          </tr>
+          <tr>
+            <td><i class="fa-solid fa-arrow-right-from-bracket"></i></td>
+            <td><a href="#" class="dropdown-item" onclick="window.logout()" tabindex="0" role="menuitem">Déconnexion</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,294 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+.datagrid-container {
+  width: 100%;
+  margin-top: vars.$spacing-medium;
+
+  .datagrid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: vars.$spacing-medium;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    #item-count {
+      font-weight: 500;
+      color: vars.$text-color;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+
+      .search-container {
+        display: flex;
+        border: 1px solid vars.$border-color;
+        border-radius: vars.$border-radius-small;
+
+        #search-input {
+          padding: 8px 12px;
+          border: none;
+          outline: none;
+          min-width: 200px;
+        }
+
+        #search-btn {
+          background: #f8f8f8;
+          border: none;
+          padding: 8px 12px;
+          cursor: pointer;
+
+          &:hover {
+            background: #e8e8e8;
+          }
+        }
+      }
+
+      #add-item-btn {
+        background: vars.$primary-color;
+        color: vars.$white;
+        padding: 8px 18px;
+        border: none;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+        font-size: vars.$font-size-base;
+
+        &:hover {
+          background: vars.$text-color;
+        }
+
+        i {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  .datagrid {
+    overflow-x: auto;
+    border: 1px solid vars.$border-color;
+    border-radius: 6px;
+    background: vars.$white;
+
+    #datagrid-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+
+      th {
+        background: #f8f8f8;
+        padding: 15px 12px;
+        text-align: left;
+        font-weight: 600;
+        font-family: vars.$font-family-bold;
+        font-weight: 700;
+        border-bottom: 2px solid vars.$border-color;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+          background: #f0f0f0;
+        }
+
+        &[data-sort]::after {
+          content: "";
+          display: inline-block;
+          margin-left: 5px;
+          width: 0;
+          height: 0;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 4px solid vars.$light-text;
+          opacity: 0.5;
+        }
+
+        &[data-sort].asc::after {
+          border-top: none;
+          border-bottom: 4px solid vars.$primary-color;
+          opacity: 1;
+        }
+
+        &[data-sort].desc::after {
+          border-top: 4px solid vars.$primary-color;
+          opacity: 1;
+        }
+      }
+
+      td {
+        padding: 12px;
+        border-bottom: 1px solid vars.$border-color;
+        vertical-align: middle;
+
+        &.loading,
+        &.error,
+        &.no-data {
+          text-align: center;
+          padding: 40px;
+          color: vars.$light-text;
+          font-style: italic;
+        }
+
+        &.error {
+          color: vars.$error-color;
+        }
+      }
+
+      tbody tr {
+        &:hover {
+          background: vars.$background-color;
+        }
+
+        &.selected {
+          background: #e6f7ff;
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+
+        button {
+          padding: 8px;
+          border: none;
+          border-radius: vars.$border-radius-small;
+          cursor: pointer;
+          background: none;
+          transition: background-color 0.2s;
+
+          &.btn-edit {
+            color: vars.$accent-blue;
+
+            &:hover {
+              background: #e6f0ff;
+            }
+          }
+
+          &.btn-delete {
+            color: #cc0000;
+
+            &:hover {
+              background: #ffe6e6;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: vars.$spacing-medium;
+    padding: 15px 0;
+    gap: vars.$spacing-small;
+
+    .pagination-right {
+      display: flex;
+      align-items: center;
+      gap: vars.$spacing-small;
+
+      button {
+        padding: 8px;
+        border: 1px solid vars.$border-color;
+        background: vars.$white;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover:not(:disabled) {
+          background: #f8f8f8;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+      #page-info {
+        font-size: vars.$font-size-base;
+        font-family: vars.$font-family-bold;
+        font-weight: 700;
+        color: vars.$light-text;
+      }
+
+      select {
+        padding: 8px 12px;
+        border: 1px solid vars.$border-color;
+        border-radius: vars.$border-radius-small;
+        background: vars.$white;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+          border-color: vars.$primary-color;
+        }
+      }
+    }
+  }
+
+  @include mix.media-mobile {
+    .datagrid-container .datagrid-header .header-controls {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: vars.$spacing-small !important;
+
+      .search-container {
+        order: 1;
+        width: 100% !important;
+        max-width: 400px;
+        margin: 0 auto;
+
+        #search-input {
+          min-width: auto;
+          width: calc(100% - 40px);
+        }
+      }
+
+      #add-item-btn {
+        order: 2;
+        width: 100% !important;
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: vars.$spacing-small;
+      }
+    }
+
+    .datagrid-container .datagrid {
+      #datagrid-table {
+        min-width: 400px;
+
+        th,
+        td {
+          padding: 8px;
+          font-size: vars.$font-size-base;
+        }
+
+        .actions {
+          flex-direction: column;
+          gap: 4px;
+        }
+      }
+    }
+
+    .datagrid-container .pagination {
+      flex-direction: column;
+      gap: vars.$spacing-small;
+      justify-content: center;
+
+      .pagination-right {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,332 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  margin: 0;
+  padding: 0;
+  background-color: vars.$background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  background-color: vars.$white;
+  border-bottom: 1px solid vars.$border-color;
+}
+
+.user-profile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin-top: 95px;
+  flex: 1 0 auto;
+
+  .profile-container {
+    background-color: vars.$white;
+    border: 1px solid vars.$border-color;
+    padding: vars.$spacing-medium;
+    border-radius: vars.$border-radius-medium;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+
+    h1 {
+      font-size: vars.$font-size-large;
+      margin-bottom: vars.$spacing-large;
+    }
+
+    .error-input {
+      padding: vars.$spacing-small;
+      background-color: #ffe6e6;
+      color: vars.$error-color;
+      border: 1px solid vars.$error-color;
+      border-radius: vars.$border-radius-small;
+      margin: 15px 0;
+      text-align: center;
+      font-size: vars.$font-size-base;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .success-message {
+      padding: vars.$spacing-small;
+      background-color: #e6ffe6;
+      color: vars.$success-color;
+      border: 1px solid vars.$success-color;
+      border-radius: vars.$border-radius-small;
+      margin: 15px 0;
+      text-align: center;
+      font-size: vars.$font-size-base;
+    }
+
+    .profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: vars.$spacing-medium;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        label {
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: vars.$text-color;
+        }
+
+        .italic-text {
+          font-style: italic;
+          font-weight: 400;
+          font-size: vars.$font-size-base;
+          color: vars.$light-text;
+        }
+
+        input:not([type="checkbox"]) {
+          padding: vars.$spacing-small 40px vars.$spacing-small vars.$spacing-small;
+          font-size: 16px;
+          border: 1px solid vars.$border-color;
+          border-radius: vars.$border-radius-small;
+          width: 100%;
+          box-sizing: border-box;
+
+          &:focus {
+            outline: 2px solid vars.$secondary-color;
+            border-color: vars.$secondary-color;
+          }
+        }
+
+        &.checkbox-group {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 15px;
+
+          input[type="checkbox"] {
+            margin-right: vars.$spacing-small;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+          }
+
+          label {
+            margin: 0;
+            font-weight: normal;
+            font-size: vars.$font-size-base;
+          }
+        }
+      }
+
+      .password-container {
+        position: relative;
+
+        .password-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          input {
+            padding-right: 40px;
+          }
+
+          .password-toggle {
+            position: absolute;
+            right: vars.$spacing-small;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: vars.$light-text;
+            cursor: pointer;
+            transition: color vars.$transition-base;
+            z-index: 1;
+
+            &:hover {
+              color: vars.$secondary-color;
+            }
+
+            &:focus {
+              outline: 2px solid vars.$secondary-color;
+              outline-offset: 2px;
+            }
+          }
+        }
+      }
+
+      .submit-button {
+        background-color: vars.$secondary-color;
+        color: vars.$white;
+        padding: 12px;
+        border: none;
+        border-radius: vars.$border-radius-small;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color vars.$transition-base;
+
+        &:hover {
+          background-color: #555;
+        }
+
+        &:focus {
+          outline: 2px solid vars.$secondary-color;
+          outline-offset: 2px;
+        }
+      }
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .user-profile {
+    padding: 15px;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+
+    .profile-container {
+      padding: 15px;
+
+      .error-input,
+      .success-message {
+        font-size: 13px;
+        padding: 8px;
+        margin: 10px 0;
+      }
+
+      .profile-form {
+        .form-group {
+          label {
+            font-size: vars.$font-size-base;
+          }
+
+          .italic-text {
+            font-size: 13px;
+          }
+
+          input:not([type="checkbox"]) {
+            font-size: vars.$font-size-base;
+            padding: 8px 36px 8px 8px;
+          }
+
+          &.checkbox-group {
+            input[type="checkbox"] {
+              width: 18px;
+              height: 18px;
+            }
+
+            label {
+              font-size: 13px;
+            }
+          }
+        }
+
+        .password-container {
+          .password-wrapper {
+            input {
+              padding-right: 36px;
+            }
+
+            .password-toggle {
+              font-size: 16px;
+              right: 8px;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+        }
+
+        .submit-button {
+          font-size: vars.$font-size-base;
+          padding: vars.$spacing-small;
+        }
+      }
+    }
+  }
+}
+
+@include mix.media-small-mobile {
+  .user-profile {
+    padding: vars.$spacing-small;
+
+    .profile-container {
+      padding: vars.$spacing-small;
+
+      h1 {
+        font-size: 20px;
+        margin-bottom: vars.$spacing-medium;
+      }
+
+      .error-input,
+      .success-message {
+        font-size: vars.$font-size-small;
+        padding: 6px;
+        margin: 8px 0;
+      }
+
+      .profile-form {
+        .form-group {
+          label {
+            font-size: 13px;
+          }
+
+          .italic-text {
+            font-size: vars.$font-size-small;
+          }
+
+          input:not([type="checkbox"]) {
+            font-size: 13px;
+            padding: 6px 32px 6px 6px;
+          }
+
+          &.checkbox-group {
+            input[type="checkbox"] {
+              width: 16px;
+              height: 16px;
+            }
+
+            label {
+              font-size: vars.$font-size-small;
+            }
+          }
+        }
+
+        .password-container {
+          .password-wrapper {
+            input {
+              padding-right: 32px;
+            }
+
+            .password-toggle {
+              font-size: 14px;
+              right: 6px;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+        }
+
+        .submit-button {
+          font-size: 13px;
+          padding: 8px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  margin: 0;
+  padding: 0;
+  background-color: vars.$background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.register-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 95px auto 0;
+  padding: vars.$spacing-medium;
+
+  .register-container {
+    background: vars.$white;
+    border: 1px solid vars.$border-color;
+    padding: vars.$spacing-large;
+    border-radius: vars.$border-radius-medium;
+    max-width: 600px;
+    margin: 0 auto;
+
+    .register-header {
+      text-align: center;
+      margin-bottom: vars.$spacing-large;
+
+      h2 {
+        font-size: vars.$font-size-large;
+        margin: 0 0 vars.$spacing-small 0;
+        color: vars.$text-color;
+      }
+
+      p {
+        color: vars.$light-text;
+        margin: 0;
+      }
+    }
+
+    .error-message,
+    .success-message {
+      padding: 12px 15px;
+      border-radius: vars.$border-radius-small;
+      margin-bottom: vars.$spacing-medium;
+      display: none;
+      text-align: center;
+      font-size: vars.$font-size-base;
+    }
+
+    .error-message {
+      background: #fee;
+      color: #d00;
+      border: 1px solid #fcc;
+    }
+
+    .success-message {
+      background: #efe;
+      color: #080;
+      border: 1px solid #cfc;
+    }
+
+    .register-form {
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: vars.$spacing-medium;
+        margin-bottom: vars.$spacing-medium;
+
+        @include mix.media-mobile {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .form-group {
+        margin-bottom: vars.$spacing-medium;
+
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 500;
+          color: vars.$text-color;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid vars.$border-color;
+          border-radius: vars.$border-radius-small;
+          font-size: vars.$font-size-base;
+
+          &:focus {
+            outline: none;
+            border-color: vars.$primary-color;
+          }
+
+          &:invalid {
+            border-color: #d00;
+          }
+        }
+
+        .password-requirements {
+          margin-top: 5px;
+
+          small {
+            color: vars.$light-text;
+            font-size: vars.$font-size-small;
+          }
+        }
+
+        &.checkbox-group {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+
+          input[type="checkbox"] {
+            margin-right: vars.$spacing-small;
+            width: vars.$spacing-medium;
+            height: vars.$spacing-medium;
+            vertical-align: middle;
+          }
+
+          label {
+            margin: 0;
+            font-weight: normal;
+            font-size: vars.$font-size-base;
+          }
+        }
+      }
+
+      .btn-primary {
+        background: vars.$primary-color;
+        color: vars.$white;
+        padding: 15px 25px;
+        border: none;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        width: 100%;
+        margin-top: vars.$spacing-small;
+
+        &:hover {
+          background: vars.$secondary-color;
+        }
+
+        &:disabled {
+          background: #ccc;
+          cursor: not-allowed;
+        }
+      }
+
+      .login-redirect {
+        text-align: center;
+        margin-top: vars.$spacing-medium;
+        padding-top: vars.$spacing-medium;
+        border-top: 1px solid #eee;
+
+        p {
+          margin: 0;
+          color: vars.$light-text;
+        }
+      }
+
+      .link {
+        color: vars.$accent-blue;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .register-section {
+    padding: 15px;
+    margin-top: 80px;
+
+    .register-container {
+      padding: vars.$spacing-medium;
+    }
+  }
+}

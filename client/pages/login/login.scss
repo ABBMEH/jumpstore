@@ -1,0 +1,265 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  margin: 0;
+  padding: 0;
+  background-color: vars.$background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  background-color: vars.$white;
+  border-bottom: 1px solid vars.$border-color;
+}
+
+.login-section {
+  width: 100%;
+  min-height: calc(100vh - 95px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-container {
+    background-color: vars.$white;
+    border: 1px solid vars.$border-color;
+    padding: vars.$spacing-medium;
+    border-radius: vars.$border-radius-medium;
+    width: 90vw;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin: auto;
+
+    h2 {
+      font-size: vars.$font-size-large;
+      margin-bottom: vars.$spacing-medium;
+      text-align: center;
+    }
+
+    .error-message {
+      padding: vars.$spacing-small;
+      background-color: #ffe6e6;
+      color: vars.$error-color;
+      border: 1px solid vars.$error-color;
+      border-radius: vars.$border-radius-small;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: vars.$font-size-base;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-size: vars.$font-size-base;
+          margin-bottom: 5px;
+        }
+
+        input {
+          padding: 8px;
+          font-size: vars.$font-size-base;
+          border: 1px solid vars.$border-color;
+          border-radius: vars.$border-radius-small;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      }
+
+      .login-button {
+        padding: vars.$spacing-small;
+        font-size: 16px;
+        background-color: vars.$primary-color;
+        color: vars.$white;
+        border: none;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+
+        &:hover {
+          background-color: vars.$secondary-color;
+        }
+      }
+
+      .form-links {
+        display: flex;
+        justify-content: space-between;
+        font-size: vars.$font-size-base;
+
+        a {
+          color: vars.$primary-color;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mix.media-desktop-large {
+  .login-section {
+    padding: vars.$spacing-medium;
+  }
+
+  .login-container {
+    padding: 25px;
+    max-width: 450px;
+  }
+
+  .login-form {
+    gap: 18px;
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      label {
+        font-size: 15px;
+      }
+
+      input {
+        padding: vars.$spacing-small;
+        font-size: 15px;
+      }
+    }
+
+    .login-button {
+      padding: 12px;
+      font-size: 17px;
+    }
+
+    .form-links {
+      font-size: 15px;
+    }
+
+    .error-message {
+      font-size: 15px;
+      padding: 12px;
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .login-section {
+    padding: vars.$spacing-small;
+    min-height: calc(100vh - 95px);
+  }
+
+  .login-container {
+    padding: 15px;
+    max-width: 90vw;
+    margin: auto;
+  }
+
+  .login-form {
+    gap: 12px;
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      label {
+        font-size: 13px;
+      }
+
+      input {
+        padding: 7px;
+        font-size: 13px;
+      }
+    }
+
+    .login-button {
+      padding: 8px;
+      font-size: vars.$font-size-base;
+    }
+
+    .form-links {
+      font-size: 13px;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .error-message {
+      font-size: 13px;
+      padding: 8px;
+    }
+  }
+}
+
+@include mix.media-small-mobile {
+  .login-section {
+    padding: 5px;
+    min-height: calc(100vh - 95px);
+  }
+
+  .login-container {
+    padding: vars.$spacing-small;
+    max-width: 95vw;
+    border-radius: 6px;
+    margin: auto;
+  }
+
+  .login-form {
+    gap: vars.$spacing-small;
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      label {
+        font-size: vars.$font-size-small;
+        margin-bottom: 4px;
+      }
+
+      input {
+        padding: 6px;
+        font-size: vars.$font-size-small;
+        border-radius: 3px;
+      }
+    }
+
+    .login-button {
+      padding: 7px;
+      font-size: 13px;
+      border-radius: 3px;
+    }
+
+    .form-links {
+      font-size: vars.$font-size-small;
+      gap: 6px;
+    }
+
+    .error-message {
+      font-size: vars.$font-size-small;
+      padding: 6px;
+    }
+  }
+}

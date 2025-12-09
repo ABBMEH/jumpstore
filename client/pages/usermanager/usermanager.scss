@@ -1,0 +1,379 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  margin: 0;
+  padding: 0;
+  background-color: vars.$background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  background-color: vars.$white;
+  border-bottom: 1px solid vars.$border-color;
+}
+
+.user-manager {
+  width: 100%;
+  max-width: 1200px;
+  margin: 95px auto 0;
+  padding: vars.$spacing-medium;
+
+  .admin-container {
+    background: vars.$white;
+    border: 1px solid vars.$border-color;
+    padding: vars.$spacing-large;
+    border-radius: vars.$border-radius-medium;
+
+    .admin-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: vars.$spacing-large;
+      flex-wrap: wrap;
+      gap: 40px;
+
+      .btn-back {
+        background: vars.$primary-color;
+        color: vars.$white;
+        padding: 12px;
+        border: none;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+        font-size: vars.$font-size-base;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+        &:hover {
+          background: vars.$secondary-color;
+        }
+      }
+
+      h2 {
+        font-size: vars.$font-size-large;
+        margin: 0;
+        color: vars.$text-color;
+      }
+
+      .admin-controls {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        .btn-primary {
+          background: vars.$primary-color;
+          color: vars.$white;
+          padding: 12px vars.$spacing-medium;
+          border: none;
+          border-radius: vars.$border-radius-small;
+          cursor: pointer;
+          font-size: vars.$font-size-base;
+
+          &:hover {
+            background: vars.$secondary-color;
+          }
+        }
+      }
+    }
+
+    .success-message {
+      padding: 12px 15px;
+      border-radius: vars.$border-radius-small;
+      margin-bottom: vars.$spacing-medium;
+      display: none;
+      background: #efe;
+      color: #080;
+      border: 1px solid #cfc;
+    }
+
+    .error-message {
+      padding: 12px 15px;
+      border-radius: vars.$border-radius-small;
+      margin-bottom: vars.$spacing-medium;
+      display: none;
+      background: #fee;
+      color: #c00;
+      border: 1px solid #fcc;
+    }
+
+    .tabs-container {
+      margin-top: vars.$spacing-medium;
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: vars.$spacing-small;
+        margin-bottom: vars.$spacing-medium;
+        border-bottom: 1px solid vars.$border-color;
+
+        .tab-btn {
+          padding: vars.$spacing-small vars.$spacing-medium;
+          border: none;
+          background: none;
+          cursor: pointer;
+          color: vars.$light-text;
+          font-size: 16px;
+          min-width: 80px;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &.active {
+            color: vars.$primary-color;
+            border-bottom: 2px solid vars.$primary-color;
+          }
+
+          &:hover {
+            color: vars.$primary-color;
+          }
+        }
+      }
+
+      .tab-content {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.delete-confirmation {
+  text-align: center;
+  padding: vars.$spacing-medium;
+
+  .user-info {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: vars.$border-radius-medium;
+    margin: 15px 0;
+    border-left: 4px solid #cc0000;
+  }
+
+  .role-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: vars.$primary-color;
+    color: vars.$white;
+    border-radius: 12px;
+    font-size: vars.$font-size-small;
+    margin-top: 5px;
+  }
+
+  .warning-text {
+    color: #cc0000;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+}
+
+.btn-danger {
+  background: #cc0000 !important;
+  color: vars.$white !important;
+
+  &:hover {
+    background: #aa0000 !important;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+
+  &.active {
+    display: flex;
+  }
+
+  .modal-content {
+    background: vars.$white;
+    border-radius: vars.$border-radius-medium;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: vars.$spacing-medium;
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: vars.$spacing-medium;
+
+      h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        cursor: pointer;
+        color: vars.$light-text;
+        line-height: 1;
+        padding: 5px;
+
+        &:hover {
+          color: vars.$primary-color;
+        }
+      }
+    }
+
+    .modal-body {
+      margin-bottom: vars.$spacing-medium;
+
+      .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+
+        @include mix.media-mobile {
+          flex-direction: column;
+          gap: 0;
+        }
+      }
+
+      .form-group {
+        flex: 1;
+        margin-bottom: 15px;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+          color: vars.$text-color;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+          width: 100%;
+          padding: vars.$spacing-small;
+          border: 1px solid vars.$border-color;
+          border-radius: vars.$border-radius-small;
+          font-size: vars.$font-size-base;
+
+          &:focus {
+            outline: none;
+            border-color: vars.$primary-color;
+          }
+
+          &.invalid-input {
+            border: 2px solid #dc3545;
+          }
+        }
+
+        input[type="checkbox"] {
+          margin-right: vars.$spacing-small;
+          vertical-align: middle;
+        }
+
+        select {
+          padding: 8px vars.$spacing-small;
+          cursor: pointer;
+        }
+
+        .form-error-message {
+          color: #dc3545;
+          font-size: vars.$font-size-small;
+          margin-top: 5px;
+          display: none;
+          text-align: left;
+          padding: 5px 0;
+        }
+
+        .password-help {
+          display: block;
+          margin-top: 5px;
+          color: vars.$light-text;
+          font-size: vars.$font-size-small;
+        }
+      }
+    }
+
+    .modal-footer {
+      display: flex;
+      align-items: flex-end;
+      gap: vars.$spacing-small;
+
+      .form-error-message {
+        color: #dc3545;
+        font-size: vars.$font-size-base;
+        margin-bottom: vars.$spacing-small;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .user-manager {
+    padding: 15px;
+    margin-top: 80px;
+
+    .admin-container {
+      padding: vars.$spacing-medium;
+
+      .admin-header {
+        h2 {
+          font-size: 18px;
+        }
+      }
+
+      .tabs {
+        gap: 8px;
+
+        .tab-btn {
+          padding: 8px 12px;
+          font-size: vars.$font-size-base;
+          min-width: 70px;
+          flex: 1;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@include mix.media-small-mobile {
+  .user-manager {
+    .tabs {
+      flex-direction: column;
+      align-items: stretch;
+
+      .tab-btn {
+        min-width: 100%;
+        padding: vars.$spacing-small;
+        font-size: vars.$font-size-base;
+      }
+    }
+  }
+}

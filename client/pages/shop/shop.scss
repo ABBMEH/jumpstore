@@ -1,0 +1,495 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  margin: 0;
+  padding: 0;
+  background-color: vars.$background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  background-color: vars.$white;
+  border-bottom: 1px solid vars.$border-color;
+}
+
+.products {
+  width: 100%;
+  max-width: 1200px;
+  margin: 95px auto 0 auto;
+  padding: vars.$spacing-medium;
+}
+
+.products .header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.products .header span {
+  font-size: 15px;
+  color: vars.$text-color;
+  font-weight: 500;
+}
+
+.products .header .filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vars.$spacing-small;
+  align-items: center;
+  padding: 12px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.products .header .filter-controls select {
+  padding: 8px 24px 8px 12px;
+  font-size: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: vars.$white;
+  color: vars.$text-color;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  width: 100%;
+  max-width: 200px;
+}
+
+.products .header .filter-controls select:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.products .header .filter-controls select:hover {
+  transform: scale(1.02);
+  border-color: #1a73e8;
+}
+
+.products .header .filter-controls .price-filter {
+  display: flex;
+  align-items: center;
+  gap: vars.$spacing-small;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: vars.$white;
+  border: 1px solid #e0e0e0;
+}
+
+.products .header .filter-controls .price-filter label {
+  font-size: 15px;
+  color: vars.$text-color;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.products .header .filter-controls .price-filter input[type="range"] {
+  width: 100px;
+  cursor: pointer;
+  accent-color: #1a73e8;
+  background: linear-gradient(to right, #1a73e8 0%, #1a73e8 var(--value), #e0e0e0 var(--value), #e0e0e0 100%);
+}
+
+.products .header .filter-controls .price-filter input[type="range"]::-webkit-slider-thumb {
+  background: #1a73e8;
+  border: 2px solid vars.$white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.products .header .filter-controls .price-filter .slider-values {
+  display: flex;
+  gap: 6px;
+  font-size: vars.$font-size-base;
+  color: vars.$text-color;
+  font-weight: 500;
+}
+
+.products .header .filter-controls button {
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: all vars.$transition-base;
+}
+
+.products .header .filter-controls button#apply-filter {
+  background-color: #1a73e8;
+  color: vars.$white;
+}
+
+.products .header .filter-controls button#apply-filter:hover,
+.products .header .filter-controls button#apply-filter:focus {
+  background-color: #1557b0;
+  transform: scale(1.03);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.products .header .filter-controls button#apply-filter:focus {
+  outline: 2px solid #1557b0;
+  outline-offset: 2px;
+}
+
+.products .header .filter-controls button#clear-all {
+  background-color: #f1f3f4;
+  color: vars.$text-color;
+}
+
+.products .header .filter-controls button#clear-all:hover,
+.products .header .filter-controls button#clear-all:focus {
+  background-color: #e0e0e0;
+  transform: scale(1.03);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.products .header .filter-controls button#clear-all:focus {
+  outline: 2px solid vars.$light-text;
+  outline-offset: 2px;
+}
+
+.products .header .filter-controls .filter-subcategories {
+  position: relative;
+}
+
+.products .header .filter-controls .filter-subcategories .combobox-trigger {
+  padding: 8px 24px 8px 12px;
+  font-size: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: vars.$white;
+  color: vars.$text-color;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  width: 100%;
+  max-width: 200px;
+}
+
+.products .header .filter-controls .filter-subcategories .combobox-trigger:hover {
+  transform: scale(1.02);
+  border-color: #1a73e8;
+}
+
+.products .header .filter-controls .filter-subcategories .combobox-trigger:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.products .header .filter-controls .filter-subcategories .combobox-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: vars.$white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  padding: 10px;
+}
+
+.products .header .filter-controls .filter-subcategories .combobox-content.open {
+  display: block;
+}
+
+.products .header .filter-controls .filter-subcategories .checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.products .header .filter-controls .filter-subcategories .checkbox-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1a73e8;
+}
+
+.products .header .filter-controls .filter-subcategories .checkbox-item input[type="checkbox"]:hover,
+.products .header .filter-controls .filter-subcategories .checkbox-item input[type="checkbox"]:focus {
+  outline: 2px solid #1a73e8;
+  outline-offset: 2px;
+}
+
+.products .header .filter-controls .filter-subcategories .checkbox-item label {
+  font-size: 14px;
+  color: vars.$text-color;
+  cursor: pointer;
+}
+
+.products .header .filter-controls .filter-subcategories .combobox-content p {
+  font-size: 14px;
+  color: vars.$text-color;
+  margin: 0;
+  padding: 10px;
+}
+
+#product-count {
+  margin-top: vars.$spacing-medium;
+}
+
+.products .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: vars.$spacing-medium;
+  min-height: 300px;
+}
+
+.products .product {
+  background-color: vars.$white;
+  border: 1px solid vars.$border-color;
+  padding: vars.$spacing-small;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.products .product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.products .product .brand-logo {
+  max-width: 70px;
+  height: auto;
+  margin: vars.$spacing-medium auto 15px;
+  display: block;
+}
+
+.products .product h3 {
+  font-size: vars.$font-size-base;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.products .product p {
+  display: flex;
+  justify-content: center;
+  gap: vars.$spacing-small;
+  font-weight: 700;
+  color: vars.$primary-color;
+}
+
+.products .product .promo-price {
+  color: #d00;
+}
+
+.products .product .original-price {
+  color: vars.$primary-color;
+  text-decoration: line-through;
+  font-size: vars.$font-size-base;
+  font-weight: 600;
+}
+
+#load-more-sentinel {
+  height: 1px;
+  width: 100%;
+  position: relative;
+}
+
+#load-more-sentinel::after {
+  content: "Chargement...";
+  display: block;
+  text-align: center;
+  font-size: vars.$font-size-base;
+  color: vars.$light-text;
+  padding: vars.$spacing-medium 0;
+  opacity: 0;
+  transition: opacity vars.$transition-base;
+}
+
+#load-more-sentinel.loading::after {
+  opacity: 1;
+}
+
+@include mix.media-mobile {
+  .products .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .products .header .filter-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    justify-items: start;
+    align-items: start;
+    gap: 8px;
+    padding: vars.$spacing-small;
+  }
+
+  .products .header .filter-controls select:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  .products .header .filter-controls select:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .products .header .filter-controls select:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  .products .header .filter-controls .filter-subcategories {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .products .header .filter-controls .price-filter {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+  }
+
+  .products .header .filter-controls .price-filter input[type="range"] {
+    width: 100%;
+  }
+
+  .products .header .filter-controls .price-filter label {
+    font-size: vars.$font-size-base;
+  }
+
+  .products .header .filter-controls .price-filter .slider-values {
+    font-size: 13px;
+  }
+
+  .products .header .filter-controls button {
+    width: 50%;
+    padding: vars.$spacing-small;
+    font-size: vars.$font-size-base;
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+    margin-top: 8px;
+    justify-self: start;
+  }
+
+  .products .header .filter-controls button:nth-child(6) {
+    justify-self: end;
+  }
+
+  .products .header .filter-controls .filter-subcategories .combobox-content {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .products .header .filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .products .header .filter-controls select {
+    flex: 0 0 calc(25% - 10px);
+    max-width: 200px;
+  }
+
+  .products .header .filter-controls .filter-subcategories {
+    flex: 0 0 calc(25% - 10px);
+    max-width: 200px;
+  }
+
+  .products .header .filter-controls .price-filter {
+    flex: 0 0 calc(50% - 7.5px);
+    margin: vars.$spacing-small 0;
+  }
+
+  .products .header .filter-controls button {
+    flex: 0 0 calc(25% - 7.5px);
+    max-width: 150px;
+    margin: 5px;
+  }
+}
+
+@include mix.media-small-mobile {
+  .products {
+    padding: 15px;
+  }
+
+  .products .header {
+    gap: 12px;
+  }
+
+  .products .header span {
+    font-size: vars.$font-size-base;
+  }
+
+  .products .header .filter-controls {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .products .header .filter-controls select {
+    font-size: 13px;
+    padding: 8px 20px 8px vars.$spacing-small;
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .products .header .filter-controls .filter-subcategories .combobox-trigger {
+    font-size: 13px;
+    padding: 8px 20px 8px vars.$spacing-small;
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .products .header .filter-controls .filter-subcategories .combobox-content {
+    max-width: 100%;
+  }
+
+  .products .header .filter-controls .price-filter label {
+    font-size: 13px;
+  }
+
+  .products .header .filter-controls .price-filter .slider-values {
+    font-size: vars.$font-size-small;
+  }
+
+  .products .header .filter-controls button {
+    font-size: 13px;
+    padding: 8px;
+  }
+}

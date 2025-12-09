@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Créer un compte</title>
+    <link rel="stylesheet" href="register.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="register-section">
+        <div class="register-container">
+          <div class="register-header">
+            <h2>Créer un compte</h2>
+            <p>Rejoignez notre communauté et profitez de nos services</p>
+          </div>
+          <form id="register-form" class="register-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstname">Prénom *</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Votre prénom" required />
+              </div>
+              <div class="form-group">
+                <label for="lastname">Nom *</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Votre nom" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="password">Mot de passe *</label>
+                <input type="password" id="password" name="password" placeholder="Votre mot de passe" required />
+                <div class="password-requirements">
+                  <small>Doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (@$!%*?&)</small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirm-password">Confirmer le mot de passe *</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer votre mot de passe" required />
+              </div>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="terms" name="terms" required aria-required="true" aria-describedby="error-message" />
+              <label for="terms">J'accepte les <a href="#" class="link">conditions d'utilisation</a> et la <a href="#" class="link">politique de confidentialité</a> *</label>
+            </div>
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="newsletter" name="newsletter" />
+              <label for="newsletter">Je souhaite m'abonner à la newsletter pour recevoir les offres spéciales</label>
+            </div>
+          <div class="error-message" id="error-message" aria-live="assertive"></div>
+          <div class="success-message" id="success-message"></div>
+            <button type="submit" class="btn-primary btn-full">Créer mon compte</button>
+            <div class="login-redirect">
+              <p>Vous avez déjà un compte ? <a href="../login/login.html" class="link">Connectez-vous</a></p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="register.js" type="module"></script>
+  </body>
+</html>

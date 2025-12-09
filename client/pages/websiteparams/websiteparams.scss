@@ -1,0 +1,233 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  margin: 0;
+  padding: 0;
+  background-color: vars.$background-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  background-color: vars.$white;
+  border-bottom: 1px solid vars.$border-color;
+}
+
+.website-params {
+  width: 100%;
+  max-width: 1200px;
+  margin: 95px auto 0;
+  padding: vars.$spacing-medium;
+
+  .params-container {
+    background-color: vars.$white;
+    border: 1px solid vars.$border-color;
+    padding: vars.$spacing-large;
+    border-radius: vars.$border-radius-medium;
+
+    .admin-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: vars.$spacing-large;
+      flex-wrap: wrap;
+      gap: 40px;
+
+      .btn-back {
+        background: vars.$primary-color;
+        color: vars.$white;
+        padding: 12px;
+        border: none;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+        font-size: vars.$font-size-base;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+        &:hover {
+          background: vars.$secondary-color;
+        }
+      }
+
+      h1 {
+        font-size: vars.$font-size-large;
+        margin: 0;
+        color: vars.$text-color;
+      }
+    }
+
+    .message {
+      padding: vars.$spacing-small;
+      border-radius: vars.$border-radius-small;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: vars.$font-size-base;
+    }
+
+    .error-message {
+      background-color: #ffe6e6;
+      color: vars.$error-color;
+      border: 1px solid vars.$error-color;
+    }
+
+    .success-message {
+      background-color: #e6ffe6;
+      color: vars.$success-color;
+      border: 1px solid vars.$success-color;
+    }
+
+    .form-group {
+      margin-bottom: vars.$spacing-medium;
+      text-align: left;
+
+      label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: vars.$text-color;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: vars.$spacing-small;
+        font-size: vars.$font-size-base;
+        border: 1px solid vars.$border-color;
+        border-radius: vars.$border-radius-small;
+        box-sizing: border-box;
+      }
+
+      input[type="color"] {
+        width: 100px;
+        height: 40px;
+        padding: 0;
+        border: 1px solid vars.$border-color;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+      }
+    }
+
+    button {
+      background-color: vars.$primary-color;
+      color: vars.$white;
+      padding: vars.$spacing-small vars.$spacing-medium;
+      font-size: 16px;
+      border: none;
+      border-radius: vars.$border-radius-small;
+      cursor: pointer;
+      transition: vars.$transition-base;
+
+      &:hover, &:focus {
+        background-color: vars.$secondary-color;
+      }
+
+      &:focus {
+        outline: 2px solid vars.$secondary-color;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .website-params {
+    padding: 15px;
+    margin-top: 80px;
+
+    .params-container {
+      padding: vars.$spacing-medium;
+
+      .admin-header {
+        h1 {
+          font-size: 18px;
+        }
+      }
+
+      .message {
+        font-size: vars.$font-size-small;
+        padding: 8px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+
+        label {
+          font-size: vars.$font-size-base;
+        }
+
+        input[type="text"] {
+          font-size: vars.$font-size-small;
+          padding: 8px;
+        }
+
+        input[type="color"] {
+          width: 80px;
+          height: 35px;
+        }
+      }
+
+      button {
+        font-size: vars.$font-size-base;
+        padding: 8px 15px;
+      }
+    }
+  }
+}
+
+@include mix.media-small-mobile {
+  .website-params {
+    padding: vars.$spacing-small;
+
+    .params-container {
+      padding: vars.$spacing-small;
+
+      .admin-header {
+        h1 {
+          font-size: 18px;
+        }
+      }
+
+      .message {
+        font-size: vars.$font-size-small;
+        padding: 6px;
+      }
+
+      .form-group {
+        margin-bottom: vars.$spacing-small;
+
+        label {
+          font-size: vars.$font-size-small;
+        }
+
+        input[type="text"] {
+          font-size: vars.$font-size-small;
+          padding: 6px;
+        }
+
+        input[type="color"] {
+          width: 60px;
+          height: 30px;
+        }
+      }
+
+      button {
+        font-size: vars.$font-size-small;
+        padding: 6px 12px;
+      }
+    }
+  }
+}

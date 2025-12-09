@@ -1,0 +1,92 @@
+@use "../../global/variables" as vars;
+@use "../../global/mixins" as mix;
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  &.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: vars.$white;
+    border-radius: vars.$border-radius-medium;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: vars.$spacing-medium;
+      border-bottom: 1px solid vars.$border-color;
+      background: #f8f8f8;
+
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        font-family: vars.$font-family-bold;
+        font-weight: 700;
+      }
+
+      .modal-close {
+        font-size: 24px;
+        cursor: pointer;
+        color: #999;
+
+        &:hover {
+          color: vars.$text-color;
+        }
+      }
+    }
+
+    .modal-body {
+      padding: vars.$spacing-medium;
+    }
+
+    .modal-footer {
+      display: flex;
+      gap: 15px;
+      justify-content: flex-end;
+      padding: vars.$spacing-medium;
+      border-top: 1px solid vars.$border-color;
+
+      button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: vars.$border-radius-small;
+        cursor: pointer;
+        font-size: vars.$font-size-base;
+        font-family: vars.$font-family-bold;
+        font-weight: 700;
+
+        &.btn-primary {
+          background: vars.$primary-color;
+          color: vars.$white;
+
+          &:hover {
+            background: vars.$text-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mix.media-mobile {
+  .modal .modal-content {
+    width: 95%;
+    margin: vars.$spacing-medium;
+  }
+}

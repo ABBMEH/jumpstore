@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JumpStore - Gestion des Utilisateurs</title>
+    <link rel="stylesheet" href="usermanager.css" />
+    <link rel="stylesheet" href="../../components/navbar/navbar.css" />
+    <link rel="stylesheet" href="../../components/footer/footer.css" />
+    <link rel="stylesheet" href="../../components/datagrid/datagrid.css" />
+    <link rel="stylesheet" href="../../components/modal/modal.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <main>
+      <section class="user-manager">
+        <div class="admin-container">
+          <div class="admin-header">
+            <a href="../adminpanel/adminpanel.html" class="btn-back"><i class="fas fa-arrow-left"></i></a>
+            <h2>Gestion des Utilisateurs</h2>
+            <div class="admin-controls"></div>
+          </div>
+
+          <div class="success-message" id="success-message"></div>
+
+          <div class="modal" id="modal-container">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <span class="modal-close">&times;</span>
+              </div>
+              <div class="modal-body" id="modal-body"></div>
+              <div class="modal-footer" id="modal-footer">
+                <div id="form-error-message" class="form-error-message" style="display: none; color: #dc3545; font-size: 14px; margin-bottom: 10px; text-align: center; width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal" id="delete-modal-container">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 id="delete-modal-title">Confirmer la suppression</h3>
+                <span class="modal-close">&times;</span>
+              </div>
+              <div class="modal-body" id="delete-modal-body"></div>
+              <div class="modal-footer" id="delete-modal-footer"></div>
+            </div>
+          </div>
+
+          <div class="tabs-container">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="users">Utilisateurs</button>
+            </div>
+
+            <div class="tab-content active" id="users-tab">
+              <div id="users-datagrid" class="datagrid-container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer-container"></footer>
+    <script src="../../components/navbar/navbar.js" type="module"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="../../components/datagrid/datagrid.js" type="module"></script>
+    <script src="../../components/modal/modal.js" type="module"></script>
+    <script src="usermanager.js" type="module"></script>
+  </body>
+</html>
